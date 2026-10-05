@@ -730,8 +730,9 @@ def resolve_chapter(topic_id, chapter_number, cookie):
 
 
 @app.get("/")
+@app.get("/health")
 def read_root():
-    return "it works!"
+    return jsonify(status="ok", source="KuaikanComic")
 
 
 @app.get("/config")
@@ -747,6 +748,7 @@ def config():
                 "photoPath": "/photo/<id>/chapter/<chapter>",
                 "searchPath": "/search/<text>/<page>",
                 "type": "kuaikan",
+                "idType": "numeric",
             }
         }
     )
